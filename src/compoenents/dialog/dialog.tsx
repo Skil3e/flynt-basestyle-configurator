@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "preact/compat";
-import { ComponentChildren } from "preact";
+import { ComponentChildren, FunctionalComponent } from "preact";
+import { JSXInternal } from "preact/src/jsx";
 import classNames from "classnames";
 
-type DialogProps = {
-    className?: string
+
+interface DialogProps extends Omit<JSXInternal.HTMLAttributes, "children"> {
     children: ( close: () => void ) => ComponentChildren
     trigger: ( open: () => void ) => ComponentChildren
+
 }
 
-export const Dialog = ( { className, children, trigger }: DialogProps ) => {
+export const Dialog: FunctionalComponent<DialogProps> = ( { children, trigger, ...rest } ) => {
     const dialogRef = useRef<HTMLDialogElement>( null )
 
     const openModal = () => {
@@ -31,24 +33,27 @@ export const Dialog = ( { className, children, trigger }: DialogProps ) => {
     return (
         <>
             { trigger( openModal ) }
-            <dialog class={ classNames( "dialog", className ) } ref={ dialogRef }>
+            <dialog { ...rest } class={ classNames( "dialog", rest.class ) } ref={ dialogRef }>
                 { children( closeModal ) }
             </dialog>
         </>
     )
 }
 
-export const DialogContent = ( { children }: { children: ComponentChildren } ) => {
+interface IDialogRest extends JSXInternal.HTMLAttributes {
+}
+
+export const DialogContent: FunctionalComponent<IDialogRest> = ( { children, ...rest } ) => {
     return (
-        <div class={ "dialog__content" }>
+        <div { ...rest } class={ classNames( "dialog__content", rest.class ) }>
             { children }
         </div>
     )
 }
 
-export const DialogFooter = ( { children }: { children: ComponentChildren } ) => {
+export const DialogFooter: FunctionalComponent<IDialogRest> = ( { children, ...rest } ) => {
     return (
-        <footer class={ "dialog__footer" }>
+        <footer { ...rest } class={ classNames( "dialog__footer", rest.class ) }>
             { children }
         </footer>
     )
