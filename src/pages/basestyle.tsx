@@ -125,24 +125,24 @@ const BaseStyle = () => {
                         <h3>Icon Lists</h3>
                         <ul class="iconList iconList--checkCircle">
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-check-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                     strokeLinejoin="round" class="feather feather-check-circle">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
                                 The <code>.iconList</code> class is a global helper
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-check-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                     strokeLinejoin="round" class="feather feather-check-circle">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
                                 It allows you to add custom icon styles to lists
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-check-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                     strokeLinejoin="round" class="feather feather-check-circle">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
@@ -163,7 +163,7 @@ const BaseStyle = () => {
                                 <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>milk</td>
+                                    <td>soy milk</td>
                                     <td>1 quart</td>
                                     <td>2 quart</td>
                                 </tr>
@@ -181,13 +181,13 @@ const BaseStyle = () => {
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
-                                    <td>egg yolks</td>
+                                    <td>flax egg</td>
                                     <td>12</td>
                                     <td>24</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
-                                    <td>cups sugar</td>
+                                    <td>brown sugar</td>
                                     <td>1 &frac12; cups</td>
                                     <td>3 cups</td>
                                 </tr>
@@ -243,8 +243,8 @@ const BaseStyle = () => {
                             <a class="button button--link button--small" href="src/pages/basestyle">Button Link Small</a>
                         </p>
                         <p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="feather feather-alert-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                 strokeLinejoin="round" class="feather feather-alert-circle">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="8" x2="12" y2="12"></line>
                                 <line x1="12" y1="16" x2="12.01" y2="16"></line>

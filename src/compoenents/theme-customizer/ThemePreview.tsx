@@ -83,7 +83,7 @@ export const ThemePreview = ( { field }: TypeDisplayProps ) => {
                         <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>milk</td>
+                            <td>soy milk</td>
                             <td>1 quart</td>
                             <td>2 quart</td>
                         </tr>
