@@ -14,7 +14,7 @@ type FlyntVariables = {
 
 const CustomizeToolbar = () => {
     const [ open, setOpen ] = useState( false )
-    const updateTypography = useSettingsStore( ( state ) => state.updateTypography );
+    const updates = useSettingsStore( ( state ) => ({ updateTypography: state.updateTypography, updateSizes: state.updateSizes, updateResponsive: state.updateResponsive }) );
     const state = useSettingsStore();
     const { register, handleSubmit, watch } = useForm<FlyntVariables>( {
         defaultValues: {
@@ -27,15 +27,16 @@ const CustomizeToolbar = () => {
     watch()
 
     const onChange: SubmitHandler<FlyntVariables> = (data => {
-        updateTypography( data.typography )
-        console.log( data );
+        updates.updateTypography( data.typography )
+        updates.updateSizes( data.sizes )
+        updates.updateResponsive( data.responsive )
     })
 
     return (
         <div class={ "customizer app-ui" } data-is-cutomizer-open={ `${ open }` }>
             <button onClick={ () => setOpen( !open ) } class={ "button customizer__toggle" }>
                 <span class={ "visuallyHidden" }>Open Customizer</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                      className="feather feather-settings">
                     <circle cx="12" cy="12" r="3"></circle>
                     <path

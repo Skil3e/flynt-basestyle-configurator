@@ -52,7 +52,7 @@ export const useClickOutside = ( ref: any, handler: ( event: Event ) => void ) =
 
 export function getFormattedData( state: TSettings, app?: boolean ) {
     const addDataCustomizeWhenApp = app ? ":root[data-customize] " : ":root";
-    const allRoot = printArrayFromVariables( ":root", { ...state.typography, ...state.sizes } )
+    const allRoot = printArrayFromVariables( addDataCustomizeWhenApp, { ...state.typography, ...state.sizes } )
     const themes = state.themes.map( theme =>
         printArrayFromVariables( `${ app ? ":root[data-customize] " : "" }${ theme.name === "reset" ? ":root, " : "" }[data-theme=${ theme.name }]`, theme.colors ?? { "": "" } )
     ).toString().replaceAll( app ? ",:" : ",[", app ? ":" : "[" )

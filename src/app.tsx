@@ -24,7 +24,7 @@ export function App() {
     return (
         <div>
             <style>
-                { getFormattedData( values ) }
+                { getFormattedData( values, true ) }
             </style>
             <header class={ "header app-ui" }>
                 <div class={ "header__inner centerMaxWidthContainer" }>
