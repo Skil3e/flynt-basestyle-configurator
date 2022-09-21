@@ -46,7 +46,7 @@ export const ColorPicker = ( { color, onChange }: TColorPicker ) => {
             <HexColorInput prefixed alpha
                            color={ color && colord( color ).toHex() }
                            onChange={ ( v ) => onChange( colord( v ).toHslString() ) }
-                           class={ "color-picker__picker__input" }
+                           className={ "color-picker__picker__input" }
                            type={ "text" }
             />
         </div>
