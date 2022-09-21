@@ -1,0 +1,67 @@
+/**
+* 0.0 Root
+*
+* Top level styles every element should inherit.
+*/
+
+@forward "partial/typography";
+@forward "partial/list-tables";
+@forward "partial/buttons";
+@forward "partial/forms";
+@forward "partial/helpers";
+
+html {
+	min-block-size          : 100%;
+	box-sizing              : border-box;
+	accent-color            : var(--color-accent);
+	background-color        : var(--color-background);
+	color                   : var(--color-text);
+	-moz-osx-font-smoothing : grayscale;
+	-webkit-font-smoothing  : antialiased;
+	line-height             : var(--line-height);
+	-ms-overflow-style      : -ms-autohiding-scrollbar;
+	overflow-wrap           : break-word;
+	word-wrap               : break-word;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing : border-box;
+	}
+}
+
+body {
+	min-height  : 100%;
+	font-family : var(--font-family-main);
+	overflow-x  : hidden;
+}
+
+/*
+ * Respect reduced motion preferences and remove
+ * all animations, transitions and smooth scroll.
+*/
+@media (prefers-reduced-motion : reduce) {
+	html:focus-within {
+		scroll-behavior : auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration        : 0.01ms !important;
+		animation-iteration-count : 1 !important;
+		scroll-behavior           : auto !important;
+		transition-duration       : 0.01ms !important;
+	}
+}
+
+/**
+* 3.0 Themes
+*
+* Color themes for backgrounds and content elements.
+*/
+
+[data-theme] {
+	background-color : var(--color-background);
+	color            : var(--color-text);
+}

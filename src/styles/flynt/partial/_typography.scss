@@ -1,0 +1,159 @@
+/**
+* 1.0 Typography
+*
+* Styling all likely used content flow elements.
+*/
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+@include font-face("Montserrat", "montserrat-v24-latin-regular", "400", "normal",);
+@include font-face("Montserrat", "montserrat-v24-latin-italic", "400", "italic");
+@include font-face("Montserrat", "montserrat-v24-latin-700", "700", "normal");
+@include font-face("Montserrat", "montserrat-v24-latin-700italic", "700", "italic");
+
+
+#{$heading-selectors} {
+	color              : var(--color-headline);
+	margin-block-start : var(--heading-margin-top);
+	margin-block-end   : var(--heading-margin-bottom);
+	font-weight        : var(--heading-font-weight);
+	line-height        : var(--heading-line-height);
+
+	a,
+	a:hover,
+	a:focus {
+		color           : var(--color-headline);
+		text-decoration : none;
+	}
+
+	> em {
+		color      : var(--color-accent);
+		font-style : normal;
+	}
+}
+
+@each $heading in ("h1", "h2", "h3", "h4", "h5", "h6") {
+	#{$heading}, .#{$heading} {
+		@if $heading == "h5" {
+			--heading-font-weight : 400;
+		}
+		font-size : var(--font-size-#{$heading});
+	}
+}
+
+:where(a) {
+	color                      : var(--color-accent);
+	text-decoration-color      : var(--color-accent-alpha);
+	transition-property        : color, text-decoration-color;
+	transition-duration        : 200ms;
+	transition-timing-function : var(--ease-in-out-circ);
+
+	&:hover,
+	&:focus {
+		color                 : var(--color-accent-hover);
+		text-decoration-color : var(--color-accent);
+	}
+
+	&:focus {
+		outline-color : var(--color-accent-alpha);
+	}
+}
+
+p,
+.paragraph,
+pre {
+	margin-block : 0 var(--p-margin);
+}
+
+hr {
+	display          : block;
+	width            : 100%;
+	height           : var(--border-width);
+	border           : 0;
+	margin-block     : var(--hr-margin);
+	background-color : var(--color-border-alpha);
+}
+
+img {
+	display    : block;
+	width      : 100%;
+	max-width  : 100%;
+	height     : auto;
+	object-fit : cover;
+}
+
+figure {
+	margin : 0;
+
+	+ :not(div) {
+		margin-top : var(--p-margin);
+	}
+}
+
+figcaption {
+	max-width          : var(--size-content);
+	margin-block-start : 0.5rem;
+	margin-inline-end  : auto;
+	font-size          : 0.9rem;
+}
+
+code,
+kbd,
+pre,
+samp {
+	display          : inline-block;
+	padding          : 0 0.375rem;
+	background-color : var(--color-border-alpha);
+	border-radius    : var(--radius-xs);
+	font-size        : var(--font-size-small);
+	word-break       : break-word;
+	font-family      : monospace;
+}
+
+pre {
+	padding-block  : 1.25rem;
+	padding-inline : 1.5rem;
+	border-radius  : var(--radius-sm);
+
+	code {
+		padding    : 0;
+		background : transparent;
+	}
+}
+
+blockquote,
+.blockquote {
+	position             : relative;
+	padding-inline-start : 2.5rem;
+	margin-block         : var(--size-2xl);
+	margin-inline        : 0;
+	color                : var(--color-accent);
+	font-size            : 1.5rem;
+	font-weight          : 700;
+	line-height          : var(--heading-line-height);
+
+	@media (min-width : $breakpoint-mobile-horizontal) {
+		padding-left : 3.75rem;
+		font-size    : 1.75rem;
+	}
+
+	&::before {
+		position    : absolute;
+		top         : 0.25rem;
+		left        : 0;
+		content     : "\201c"; // Unicode escaped LEFT DOUBLE QUOTATION MARK
+		font-family : Helvetica, Arial, sans-serif;
+		font-size   : 2.5rem;
+		line-height : 1;
+
+		@media (min-width : $breakpoint-mobile-horizontal) {
+			top       : -2px;
+			font-size : 6rem;
+		}
+	}
+
+	p:last-child {
+		margin-bottom : 0;
+	}
+}

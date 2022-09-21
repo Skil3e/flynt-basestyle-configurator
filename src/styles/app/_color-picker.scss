@@ -1,0 +1,24 @@
+.react-colorful + .color-picker__picker__input {
+	background-color : var(--color-background);
+	min-block-size   : 2rem;
+	border-radius    : 0;
+	width            : 200px;
+}
+
+.color-picker {
+	display     : flex;
+	align-items : center;
+	gap         : 1rem;
+
+	&__preview {
+		width         : 30px;
+		height        : 30px;
+		border        : 1px solid #ccc;
+		border-radius : 100vmin;
+		cursor        : pointer;
+	}
+
+	&__exit {
+		z-index : 2;
+	}
+}

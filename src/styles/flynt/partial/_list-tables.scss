@@ -1,0 +1,86 @@
+/**
+* 1.1 Lists & Tables
+*
+* Default and custom styled list and table elements.
+*/
+
+ul,
+ol {
+	padding-inline-start : var(--_list-indentation);
+	margin               : var(--p-margin) 0;
+
+	li {
+		margin-bottom : var(--_list-item-gap);
+	}
+
+	ul,
+	ol {
+		padding-inline-start : var(--_list-indentation-second-level);
+		margin-block         : var(--_list-item-gap) 0;
+	}
+}
+
+ul {
+	> li {
+		&::marker {
+			font-size : var(--_list-marker-font-size);
+		}
+	}
+}
+
+.iconList {
+	padding    : 0;
+	list-style : none;
+
+	li {
+		position     : relative;
+		padding-left : var(--_list-icon-indentation);
+
+		.feather:first-child {
+			position     : absolute;
+			top          : 4px;
+			left         : 0;
+			display      : block;
+			width        : 20px;
+			height       : 20px;
+			stroke-width : var(--border-width);
+		}
+	}
+}
+
+table {
+	width          : 100%;
+	max-width      : 100%;
+	margin         : 0 auto;
+	border-spacing : 0;
+	box-shadow     : inset 0 0 0 var(--_table-border-size) var(--_table-color-border);
+	text-align     : left;
+
+	+ p,
+	+ table,
+	+ figure {
+		margin-top : var(--p-margin);
+	}
+}
+
+td,
+th {
+	padding-block  : var(--_table-body-padding-block);
+	padding-inline : var(--_table-body-padding-inline);
+	text-align     : inherit;
+	vertical-align : top;
+}
+
+thead {
+	th {
+		padding-block  : var(--_table-head-padding-block);
+		padding-inline : var(--_table-head-padding-inline);
+		border-bottom  : var(--_table-head-border-size) solid var(--_table-color-head-border);
+		vertical-align : middle;
+		white-space    : nowrap;
+	}
+}
+
+tr:nth-child(even) {
+	background-color : var(--_table-color-bg-row-even);
+}

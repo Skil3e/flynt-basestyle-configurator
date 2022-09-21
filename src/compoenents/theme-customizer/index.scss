@@ -1,0 +1,58 @@
+.theme-customize {
+	[data-theme] {
+		padding-block      : 4rem;
+		border-block-start : 1px solid var(--color-border-alpha);
+	}
+
+	&__footer {
+		display          : flex;
+		align-items      : center;
+		justify-content  : center;
+		padding          : 2rem;
+		background-color : #eee;
+	}
+}
+
+.theme-customize__display.centerMaxWidthContainer {
+	position              : relative;
+	display               : grid;
+	grid-template-columns : 1fr auto;
+	align-items           : start;
+	gap                   : 1.5rem;
+
+	.remove-theme, .insert-theme {
+		--_button-padding-block  : .5rem;
+		--_button-padding-inline : .625rem;
+		--_button-border-radius  : var(--radius-round);
+		aspect-ratio             : 1 / 1;
+		position                 : absolute;
+
+	}
+
+	.remove-theme {
+		top   : -5.5rem;
+		right : 1rem;
+	}
+
+	.insert-theme {
+		bottom : -5.5rem;
+		right  : 0;
+
+	}
+}
+
+.theme-customize__colors {
+	order   : 2;
+	display : grid;
+	gap     : 1rem;
+}
+
+.settings {
+	max-inline-size : 250px;
+	inline-size     : 100%;
+}
+
+.sticky-side {
+	position : sticky;
+	top      : var(--_app-header-height);
+}

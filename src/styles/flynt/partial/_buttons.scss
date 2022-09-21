@@ -1,0 +1,160 @@
+/**
+* 1.2 Buttons
+*
+* Global button elements, including reset on standard button element.
+*/
+
+button, .button {
+	appearance       : none;
+	cursor           : pointer;
+	background-color : transparent;
+	color            : inherit;
+	font-family      : inherit;
+	font-size        : inherit;
+	line-height      : inherit;
+	text-align       : inherit;
+	border           : 0;
+	padding          : 0;
+
+	&:focus {
+		outline        : var(--border-width) solid var(--color-accent-alpha);
+		outline-offset : calc(var(--border-width) * 2);
+	}
+}
+
+.button {
+	display                    : inline-block;
+	padding-inline             : var(--_button-padding-inline);
+	padding-block              : var(--_button-padding-block);
+
+	background-color           : var(--_button-color-bg);
+	color                      : var(--_button-color-text);
+	border                     : var(--_button-border-width) solid var(--_button-color-border);
+	border-radius              : var(--_button-border-radius);
+	outline                    : none;
+
+	text-align                 : center;
+	text-decoration            : none;
+	font-weight                : var(--_button-font-weight);
+	line-height                : var(--_button-font-line-height);
+
+	transition-property        : background-color, color, border, outline, box-shadow;
+	transition-duration        : 200ms;
+	transition-timing-function : ease;
+
+	&:hover:not(.button--disabled, :disabled) {
+		color            : var(--_button-color-text-hover);
+		background-color : var(--_button-color-bg-hover);
+		border-color     : var(--_button-color-border-hover);
+	}
+
+	&:focus:not(.button--disabled, :disabled) {
+		color            : var(--_button-color-text-focus);
+		background-color : var(--_button-color-bg-focus);
+		border-color     : var(--_button-color-border-focus);
+		box-shadow       : 0 1px var(--_button-border-width) rgba(0, 0, 0, 0.25), 0 0 0 3px var(--_button-color-outline);
+		outline          : none;
+	}
+
+	&:disabled,
+	&--disabled {
+		color            : var(--_button-color-text-disabled);
+		background-color : var(--_button-color-bg-disabled);
+		border-color     : var(--_button-color-border-disabled);
+		opacity          : var(--opacity-grayed-out);
+		cursor           : not-allowed;
+		pointer-events   : none;
+	}
+
+	+ .button {
+		margin-block-start : var(--size-xs);
+	}
+
+	.feather {
+		color : var(--_button-color-text);
+	}
+}
+
+.button--small {
+	--_button-padding-block  : 0.309rem;
+	--_button-padding-inline : 1.618rem;
+	font-size                : 0.95rem;
+}
+
+.button--ghost {
+	--_button-color-bg            : transparet;
+	--_button-color-bg-hover      : var(--color-accent-hover);
+	--_button-color-bg-focus      : transparet;
+	--_button-color-bg-disabled   : transparent;
+	--_button-color-text          : var(--color-accent);
+	--_button-color-text-hover    : var(--color-accent-contrast);
+	--_button-color-text-focus    : var(--color-accent);
+	--_button-color-text-disabled : var(--color-border);
+	--_button-color-border        : var(--color-accent);
+}
+
+
+.button--link {
+	--_button-color-bg              : transparet;
+	--_button-color-bg-hover        : transparet;
+	--_button-color-bg-focus        : transparet;
+	--_button-color-bg-disabled     : transparet;
+	--_button-color-text            : var(--color-accent);
+	--_button-color-text-hover      : var(--color-accent-hover);
+	--_button-color-text-focus      : var(--color-accent-hover);
+	--_button-color-text-disabled   : var(--color-background);
+	--_button-color-border          : transparet;
+	--_button-color-border-hover    : transparet;
+	--_button-color-border-focus    : transparet;
+	--_button-color-border-disabled : transparet;
+	--_button-border-width          : 0;
+	--_button-color-outline         : transparet;
+
+	--_button-padding-block         : 0;
+	--_button-padding-inline        : 0;
+
+	position                        : relative;
+
+	&::before, &::after {
+		content : '';
+	}
+
+	&::before {
+		position         : absolute;
+		left             : 0;
+		bottom           : 0;
+		block-size       : var(--border-width);
+		inline-size      : 100%;
+
+		background-color : var(--color-accent-hover);
+
+		transform        : scaleX(0);
+		transform-origin : bottom right;
+		transition       : transform 0.2s ease-in-out;
+	}
+
+	&::after {
+		border-right        : var(--border-width) solid currentColor;
+		border-top          : var(--border-width) solid currentColor;
+		display             : inline-block;
+		block-size          : 0.5rem;
+		inline-size         : 0.5rem;
+		transform           : rotate(45deg);
+		align-self          : center;
+		margin-inline-start : var(--size-tiny);
+	}
+
+	&:hover, &:focus {
+		&::before {
+			transform        : scaleX(1);
+			transform-origin : bottom left;
+		}
+	}
+
+	&.button--small {
+		&::after {
+			block-size  : 0.375rem;
+			inline-size : 0.375rem;
+		}
+	}
+}

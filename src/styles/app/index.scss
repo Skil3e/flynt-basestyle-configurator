@@ -1,0 +1,171 @@
+@forward "customizer";
+@forward "theme-customizer";
+@forward "color-picker";
+@forward "src/compoenents/dialog";
+@use "../flynt/mixins" as *;
+
+:root {
+	--_app-sidebar-width : 420px;
+	--_app-header-height : 80px;
+}
+
+.app-ui {
+	--color-accent          : hsl(232, 74%, 52%);
+	--color-accent-hover    : hsl(232, 74%, 42%);
+	--color-accent-contrast : hsl(232 0% 100%);
+	--color-accent-alpha    : hsla(232, 74%, 52%, 0.4);
+	--color-background      : hsl(232, 0%, 100%);
+	--color-bg-1            : hsl(232, 20%, 90%);
+	--color-headline        : hsl(213, 33%, 6%);
+	--color-text            : hsl(217, 11%, 29%);
+	--color-border          : hsl(228, 16%, 40%);
+	--color-border-alpha    : hsla(228, 16%, 40%, 0.15);
+	--color-error           : hsl(343, 98%, 46%);
+
+	input {
+		width : 100%;
+	}
+
+	--shadow-color          : 220 3% 15%;
+	--shadow-strength       : 1%;
+	--shadow-1              : 0px 0 10px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
+}
+
+main {
+	padding-block-start : var(--_app-header-height);
+}
+
+.header {
+	position         : fixed;
+	z-index          : 9;
+	top              : 0;
+	background-color : var(--color-background);
+	border-bottom    : var(--border-width) solid var(--color-border-alpha);
+	inline-size      : 100%;
+	padding-inline   : 1rem;
+
+	&__inner {
+		display     : flex;
+		height      : var(--_app-header-height);
+		align-items : center;
+		gap         : 2rem;
+	}
+
+	&__brand {
+		display         : flex;
+		align-items     : center;
+		color           : var(--color-text);
+		gap             : 2rem;
+		text-decoration : none;
+	}
+
+	&__nav {
+		display             : flex;
+		align-items         : center;
+		gap                 : var(--size-lg);
+		margin-inline-start : auto;
+
+		a, button {
+			color           : var(--color-text);
+			font-weight     : 700;
+			text-decoration : none;
+
+			&:hover,
+			&.active {
+				color : var(--color-accent);
+			}
+		}
+
+		&__dropdown {
+			display          : grid;
+			background-color : var(--color-background);
+			min-inline-size  : 220px;
+			box-shadow       : var(--shadow-1);
+			border-radius    : var(--radius-base);
+			overflow         : hidden;
+
+			a, button {
+				color           : var(--color-text);
+				font-weight     : 700;
+				text-decoration : none;
+				padding         : 1rem 1.5rem;
+				transition      : background-color 200ms ease, color 200ms ease;
+
+				&.active {
+					color            : var(--color-accent);
+					background-color : var(--color-border-alpha);
+				}
+
+				&:hover {
+					background-color : var(--color-border-alpha);
+				}
+			}
+		}
+	}
+}
+
+.themes.componentSpacing {
+	margin-block-end : 0;
+}
+
+.two-columns {
+	display               : grid;
+	grid-template-columns : 1fr auto;
+	align-items           : start;
+	gap                   : 1.5rem;
+}
+
+.size-example-wrapper {
+	display     : flex;
+	flex-wrap   : wrap;
+	align-items : center;
+	gap         : var(--size-gap);
+}
+
+.size-example {
+	position         : relative;
+	height           : var(--size-3xl);
+	background-color : var(--color-border-alpha);
+}
+
+
+.final-css {
+	margin-block : 2rem;
+	position     : relative;
+
+	.copy-css-button {
+		position         : absolute;
+		right            : .625rem;
+		top              : .625rem;
+		z-index          : 7;
+		display          : inline-flex;
+		align-items      : center;
+		justify-content  : center;
+		background-color : #334754;
+		inline-size      : 48px;
+		block-size       : 48px;
+		border-radius    : 8px;
+
+		.feather {
+			color : white;
+		}
+	}
+
+	pre, code {
+		margin-block    : 0;
+		overflow-x      : auto;
+		max-inline-size : 100%;
+		inline-size     : 100%;
+
+		::-webkit-scrollbar {
+			background-color : #263238;
+			height           : 10px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color : #334754;
+			border-radius    : 30px;
+		}
+	}
+}
+

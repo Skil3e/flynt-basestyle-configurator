@@ -1,0 +1,150 @@
+/**
+* 2.0 Helpers
+*
+* Global layout classes for a consistent appearance.
+*/
+@use "../variables" as *;
+@use "../mixins" as *;
+
+/* Icons */
+.feather {
+  position: relative;
+  top: -2px;
+  color: var(--color-accent);
+  stroke-width: 1.5;
+  vertical-align: middle;
+}
+
+.pageWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  .admin-bar & {
+    padding-top: var(--wp-admin--admin-bar--height);
+  }
+}
+
+.mainContent {
+  flex: 1 0 auto;
+}
+
+.flyntComponent {
+  position: relative;
+}
+
+.componentSpacing {
+  margin: var(--component-spacing) 0;
+
+  &[data-theme] {
+    padding: var(--component-spacing) 0;
+    margin: 0;
+  }
+
+  // Reduce componentSpacing top on desktop for the first component in mainContent.
+  .mainContent > & {
+    &:first-child {
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: var(--component-spacing-tablet);
+      }
+
+      &[data-theme] {
+        @media (min-width: $breakpoint-tablet) {
+          padding-top: var(--component-spacing-tablet);
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // Reduce componentSpacing for all components in single post layouts.
+  .post-main & {
+    --component-spacing: calc(var(--component-spacing-mobile) / 2);
+
+    @media (min-width: $breakpoint-tablet) {
+      --component-spacing: calc(var(--component-spacing-tablet) / 2);
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      --component-spacing: calc(var(--component-spacing-desktop) / 2);
+    }
+  }
+}
+
+.centerMaxWidthContainer {
+  @include center;
+}
+
+.centerContentMaxWidth {
+  max-width: var(--size-content);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.centerContentMaxWidthLarge {
+  max-width: var(--size-content-lg);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.preContent {
+  @include reset-content-margins;
+
+  max-width: var(--size-content);
+  margin: 0 auto calc(var(--component-spacing) / 2);
+  text-align: center;
+}
+
+.postContent {
+  @include reset-content-margins;
+
+  max-width: var(--size-content);
+  margin: calc(var(--component-spacing) / 2) auto 0;
+  text-align: center;
+}
+
+.scrollableTableWrapper {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Class for text that should only be visible to screen readers */
+.visuallyHidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px !important;
+  height: 1px !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Skip link behavior */
+.skipLink {
+  position: fixed;
+  z-index: 999;
+  top: -100px;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/**
+* 2.1 Box Helpers
+*/
+
+.boxPadding {
+  @include reset-content-margins;
+
+  padding: var(--box-padding);
+}
+
+.boxRadius {
+  z-index: 1;
+  overflow: hidden;
+  border-radius: var(--box-border-radius);
+}
+
+.boxShadow {
+  box-shadow: 0 5px 35px calc(-1 * var(--border-width)) rgb(0 0 0 / 8%);
+}

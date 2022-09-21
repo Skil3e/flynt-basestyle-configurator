@@ -1,0 +1,229 @@
+@use "functions" as *;
+// Helpers
+$breakpoint-mobile-horizontal : rem(480px);
+$breakpoint-tablet            : rem(768px);
+$breakpoint-tablet-horizontal : rem(1024px);
+$breakpoint-desktop           : rem(1280px);
+$breakpoint-desktop-wide      : rem(1440px);
+
+$heading-selectors            : 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
+$input-selectors              : '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
+
+// Themes
+:root,
+[data-theme='reset'] {
+	--color-brand           : hsl(232, 74%, 52%);
+	--color-accent          : hsl(232, 74%, 52%);
+	--color-accent-hover    : hsl(232, 74%, 42%);
+	--color-accent-contrast : hsl(232 0% 100%);
+	--color-accent-alpha    : hsla(232, 74%, 52%, 0.4);
+	--color-background      : hsl(232, 0%, 100%);
+	--color-bg-1            : hsl(232, 20%, 90%);
+	--color-headline        : hsl(213, 33%, 6%);
+	--color-text            : hsl(217, 11%, 29%);
+	--color-border          : hsl(228, 16%, 40%);
+	--color-border-alpha    : hsla(228, 16%, 40%, 0.15);
+	--color-error           : hsl(343, 98%, 46%);
+}
+
+[data-theme='light'] {
+	--color-background : hsl(228, 56%, 98%);
+}
+
+[data-theme='dark'] {
+	--color-accent          : hsl(37, 100%, 69%);
+	--color-accent-hover    : hsl(37, 100%, 59%);
+	--color-accent-contrast : hsl(227, 70%, 20%);
+	--color-accent-alpha    : hsla(37, 100%, 69%, 0.4);
+	--color-background      : hsl(227, 70%, 20%);
+	--color-headline        : hsl(0, 0%, 100%);
+	--color-text            : hsl(0, 0%, 100%);
+	--color-border          : hsl(0, 0%, 100%);
+	--color-border-alpha    : hsla(240, 7%, 92%, 0.1);
+}
+
+[data-theme='hero'] {
+	--color-accent          : hsl(37, 100%, 84%);
+	--color-accent-hover    : hsl(37, 100%, 74%);
+	--color-accent-contrast : var(--color-brand);
+	--color-accent-alpha    : hsla(37, 100%, 84%, 0.4);
+	--color-background      : var(--color-brand);
+	--color-headline        : hsl(0, 0%, 100%);
+	--color-text            : hsl(0, 0%, 100%);
+	--color-border          : hsl(0, 0%, 100%);
+	--color-border-alpha    : hsla(240, 7%, 92%, 0.1);
+}
+
+:root {
+	--opacity-grayed-out    : calc(1 - 0.618); // based on golden ratio.
+	//----------------------------------------------------------------------------------
+	// Sizes
+	//----------------------------------------------------------------------------------
+	--size-tiny             : 0.25rem; /* 4px */
+	--size-xs               : 0.5rem; /* 8px */
+	--size-sm               : 0.75rem; /* 12px */
+	--size-base             : 1rem; /* 16px */
+	--size-md               : 1.25rem; /* 20px */
+	--size-lg               : 1.5rem; /* 24px */
+	--size-xl               : 2rem; /* 32px */
+	--size-2xl              : 3rem; /* 48px */
+	--size-3xl              : 6rem; /* 96px */
+	--size-huge             : 8rem; /* 128px */
+	--size-content          : 60ch;
+	--size-content-lg       : 80ch;
+	--size-container        : rem(1440px);
+	--size-gap              : var(--size-lg);
+	--gap-width             : var(--size-gap);
+	//----------------------------------------------------------------------------------
+	// Animations
+	//----------------------------------------------------------------------------------
+	--ease-in-out-circ      : cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	//----------------------------------------------------------------------------------
+	// Borders
+	//----------------------------------------------------------------------------------
+	--border-width          : 2px;
+	// Border Radius
+	--radius-xs             : var(--size-tiny);
+	--radius-sm             : var(--size-xs);
+	--radius-base           : var(--size-base);
+	--radius-round          : 100vmin;
+	//----------------------------------------------------------------------------------
+	// Typography
+	//----------------------------------------------------------------------------------
+	--font-family-main      : 'Montserrat', Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--line-height           : 1.7;
+	// Heading weight and line-height
+	--heading-font-weight   : 700;
+	--heading-line-height   : calc(1em + 0.5rem);
+	// Heading spacing
+	--heading-margin-top    : var(--size-lg);
+	--heading-margin-bottom : var(--size-xs);
+	// Typography spacing
+	--p-margin              : var(--size-lg);
+	--hr-margin             : var(--size-2xl);
+	// Heading sizes mobile
+	--font-size-small       : .95rem;
+	--font-size-h1          : 2.25rem;
+	--font-size-h2          : 1.5rem;
+	--font-size-h3          : 1.125rem;
+	--font-size-h4          : 1rem;
+	--font-size-h5          : 1.125rem;
+	--font-size-h6          : 1rem;
+	// Heading sizes desktop
+	@media (min-width : $breakpoint-mobile-horizontal) {
+		--font-size-h1 : 2.75rem;
+		--font-size-h2 : 2.5rem;
+		--font-size-h3 : 1.25rem;
+		--font-size-h4 : 1.125rem;
+		--font-size-h5 : 1.25rem;
+	}
+
+	//----------------------------------------------------------------------------------
+	// Buttons
+	//----------------------------------------------------------------------------------
+	--button-border-radius  : var(--radius-round);
+	--box-border-radius     : var(--radius-base);
+
+
+	//----------------------------------------------------------------------------------
+	// Helper sizes for mobile
+	//----------------------------------------------------------------------------------
+	--box-padding           : var(--size-base);
+	--container-padding     : var(--size-base);
+	--component-spacing     : var(--size-2xl);
+	// Helper sizes tablet
+	@media (min-width : $breakpoint-tablet) {
+		--box-padding       : var(--size-lg);
+		--container-padding : var(--size-lg);
+		--component-spacing : var(--size-3xl);
+	}
+	// Helper sizes desktop
+	@media (min-width : $breakpoint-desktop) {
+		--box-padding       : var(--size-xl);
+		--container-padding : var(--size-2xl);
+		--component-spacing : var(--size-huge);
+	}
+}
+
+ol, ul {
+	//----------------------------------------------------------------------------------
+	// Lists
+	//----------------------------------------------------------------------------------
+	--_list-indentation              : 1.5rem;
+	--_list-indentation-second-level : 2rem;
+	--_list-icon-indentation         : 2rem;
+	--_list-item-gap                 : 0.25rem;
+	--_list-marker-font-size         : 1.25rem;
+}
+
+table {
+	//----------------------------------------------------------------------------------
+	// Tables
+	//----------------------------------------------------------------------------------
+	--_table-color-border        : var(--color-border);
+	--_table-color-head-border   : var(--_table-color-border);
+	--_table-color-bg-row-even   : var(--color-border-alpha);
+	--_table-border-size         : var(--border-width);
+	--_table-border              : inset 0 0 0 var(--_table-border-size) var(--_table-color-border);
+	--_table-head-border-size    : var(--border-width);
+	--_table-head-padding-block  : 1.25rem;
+	--_table-head-padding-inline : 1.5rem;
+	--_table-body-padding-block  : 0.9375rem;
+	--_table-body-padding-inline : 1.5rem;
+}
+
+#{$input-selectors} {
+	//----------------------------------------------------------------------------------
+	// Forms
+	//----------------------------------------------------------------------------------
+	--_input-spacing                   : 1rem;
+	--_input-fieldset-spacing          : 2rem;
+	--_input-padding-block             : 0.309rem;
+	--_input-padding-inline            : 0.927rem;
+	--_input-font-size                 : 1rem;
+	--_input-line-height               : 1.25;
+	--_input-min-height                : 3.5rem;
+	// Form Colors
+	--_input-color-background          : transparent;
+	--_input-color-background-disabled : var(--color-border-alpha);
+	--_input-color-text                : var(--color-headline);
+	--_input-color-text-disabled       : var(--color-border);
+	--_input-color-placeholder         : var(--color-text);
+	--_input-color-border              : var(--color-border);
+	--_input-color-border-disabled     : var(--color-border);
+	// Form Border
+	--_input-border-width              : var(--border-width);
+	--_input-border-style              : solid;
+	--_input-border-radius             : var(--box-border-radius);
+	// Form Legend
+	--_legend-font-size                : 1.125rem;
+	--_legend-margin-bottom            : 1.125rem;
+	// Form Label
+	--_label-font-size                 : 1rem;
+	--_label-font-wight                : 700;
+	--_label-margin-bottom             : 0.5rem;
+	--_label-line-height               : 1.4;
+}
+
+.button {
+	--_button-color-bg              : var(--color-accent);
+	--_button-color-bg-hover        : var(--color-accent-hover);
+	--_button-color-bg-focus        : var(--color-accent-hover);
+	--_button-color-bg-disabled     : var(--color-border);
+	--_button-color-text            : var(--color-accent-contrast);
+	--_button-color-text-hover      : var(--color-accent-contrast);
+	--_button-color-text-focus      : var(--color-accent-contrast);
+	--_button-color-text-disabled   : var(--color-background);
+	--_button-color-border          : var(--color-accent);
+	--_button-color-border-hover    : var(--color-accent-hover);
+	--_button-color-border-focus    : var(--color-accent-hover);
+	--_button-color-border-disabled : var(--color-border);
+	--_button-border-radius         : var(--button-border-radius);
+	--_button-color-outline         : var(--color-accent-alpha);
+	--_button-border-width          : var(--border-width);
+	--_button-font-weight           : 700;
+	--_button-font-line-height      : var(--line-height);
+	--_button-padding-inline        : 1.618rem;
+	--_button-padding-block         : 0.618rem;
+	--_button-focus-shadow          : 0 1px var(--border-width) rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
+}

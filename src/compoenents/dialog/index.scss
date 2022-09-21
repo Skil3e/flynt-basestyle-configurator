@@ -1,0 +1,36 @@
+.dialog {
+	inline-size   : min(600px, 100%);
+	border        : none;
+	border-radius : var(--radius-base);
+
+	&:modal {
+		inset   : 0;
+		margin  : auto;
+		padding : 0;
+	}
+}
+
+.dialog__content {
+
+	 > :first-child {
+		margin-block-start : 0;
+	}
+
+	padding : 1rem;
+}
+
+.dialog__footer {
+	display            : flex;
+	align-items        : center;
+	border-block-start : 1px solid var(--color-border-alpha);
+
+	.button {
+		--_button-border-radius : 0;
+		margin-block-start      : 0 !important;
+		flex-grow               : 1;
+
+		&--ghost {
+			--_button-color-border : transparent;
+		}
+	}
+}

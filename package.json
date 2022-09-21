@@ -1,0 +1,42 @@
+{
+  "name": "flynt-basestyle-configurator",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "ling:css": "npx stylelint \"**/*.scss\" --fix"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@preact/signals": "^1.0.4",
+    "classnames": "^2.3.2",
+    "colord": "^2.9.3",
+    "immer": "^9.0.15",
+    "modern-normalize": "^1.1.0",
+    "preact": "^10.10.6",
+    "preact-head": "^1.0.3",
+    "preact-router": "^4.1.0",
+    "prismjs": "^1.29.0",
+    "react-colorful": "^5.6.1",
+    "react-hook-form": "^7.35.0",
+    "react-popper": "^2.3.0",
+    "react-tiny-popover": "^7.1.0",
+    "sass": "^1.54.9",
+    "use-debounce": "^8.0.4",
+    "zustand": "^4.1.1"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.3.0",
+    "@types/prismjs": "^1.26.0",
+    "@types/react-color": "^3.0.6",
+    "stylelint": "^14.11.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard-scss": "^5.0.0",
+    "stylelint-order": "^5.0.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}

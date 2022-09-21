@@ -1,0 +1,94 @@
+/**
+ * Shorthands to help writing easier to understand code.
+*/
+
+@mixin font-face(
+	$family,
+	$file,
+	$weight: "normal",
+	$style: "normal",
+	$woff2: true,
+	$base-path: "../assets/fonts/"
+) {
+	$path : "#{$base-path}#{$file}.woff2";
+
+	@font-face {
+		font-display : swap;
+		font-family  : $family;
+		font-style   : unquote($style);
+		font-weight  : unquote($weight);
+
+		@if $woff2 {
+			src : url($path) format("woff2"),
+			url($path) format("woff");
+		} @else {
+			src : url($path) format("woff");
+		}
+	}
+}
+
+@mixin center(
+	$max-width: var(--size-container),
+	$padding: var(--container-padding)
+) {
+	display       : block;
+	max-width     : $max-width;
+	padding-right : $padding;
+	padding-left  : $padding;
+	margin-right  : auto;
+	margin-left   : auto;
+}
+
+@mixin reset-content-margins($direction: "both") {
+	@if $direction == "both" or $direction == "top" {
+		> :first-child {
+			padding-top : 0;
+			margin-top  : 0;
+		}
+	}
+
+	@if $direction == "both" or $direction == "bottom" {
+		> :last-child {
+			padding-bottom : 0;
+			margin-bottom  : 0;
+		}
+	}
+}
+
+@mixin reset-list {
+	display    : block;
+	padding    : 0;
+	margin     : 0;
+	list-style : none;
+}
+
+@mixin reset-list-item {
+	margin-bottom : 0;
+}
+
+@mixin reset-link {
+	text-decoration : none;
+}
+
+/**
+* Grid Mixin
+*
+* Applies a flexbox grid (based on css variables) to a container element. All direct children will be modified to create a column based grid.
+*/
+@mixin grid($columns: 1, $alignment: flex-start, $row-gap: var(--gap-width), $column-gap: var(--gap-width) ) {
+	--grid-columns    : #{$columns};
+	--grid-alignment  : #{$alignment};
+	--grid-row-gap    : #{$row-gap};
+	--grid-column-gap : #{$column-gap};
+
+	display           : flex;
+	width             : 100%;
+	flex-wrap         : wrap;
+	justify-content   : var(--grid-alignment);
+	column-gap        : var(--grid-column-gap);
+	row-gap           : var(--grid-row-gap);
+
+	> * {
+		width : calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-column-gap)));
+	}
+}
